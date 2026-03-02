@@ -7,6 +7,7 @@ class Order < ApplicationRecord
 
   validates :control_number, presence: true, uniqueness: true
   validates :state, presence: true
+  validates :title, presence: true
 
   before_validation :set_default_state, on: :create
   validate :valid_state_transition, if: :will_save_change_to_state?

@@ -40,6 +40,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:control_number)
+    params.require(:order).permit(:control_number, :title)
   end
 end

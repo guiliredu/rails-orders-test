@@ -6,6 +6,16 @@
   </div>
 
   <div>
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "border px-3 py-2 rounded w-full" %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 4, class: "border px-3 py-2 rounded w-full" %>
+  </div>
+
+  <div>
     <%= form.submit class: "bg-blue-500 text-white px-4 py-2 rounded" %>
   </div>
 
