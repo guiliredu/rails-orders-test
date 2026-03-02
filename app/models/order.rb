@@ -6,11 +6,8 @@ class Order < ApplicationRecord
   }
 
   validates :control_number, presence: true, uniqueness: true
-  validates :state, presence: true
-  validates :title, presence: true
 
   before_validation :set_default_state, on: :create
-  validate :valid_state_transition, if: :will_save_change_to_state?
 
   def start_progress!
     raise "Invalid transition" unless pending?
@@ -26,21 +23,5 @@ class Order < ApplicationRecord
 
   def set_default_state
     self.state ||= :pending
-  end
-
-  def valid_state_transition
-    return if new_record?
-
-    transitions = {
-      "pending" => ["in_progress"],
-      "in_progress" => ["completed"],
-      "completed" => []
-    }
-
-    previous_state = state_was
-
-    unless transitions[previous_state]&.include?(state)
-      errors.add(:state, "invalid transition from #{previous_state} to #{state}")
-    end
   end
 end
