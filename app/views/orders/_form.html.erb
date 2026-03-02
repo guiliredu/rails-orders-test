@@ -1,0 +1,12 @@
+<%= form_with(model: order, class: "space-y-4") do |form| %>
+
+  <div>
+    <%= form.label :control_number %>
+    <%= form.text_field :control_number, class: "border px-3 py-2 rounded w-full" %>
+  </div>
+
+  <div>
+    <%= form.submit class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+  </div>
+
+<% end %>

@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Orders" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Orders">
-    <meta name="mobile-web-app-capable" content="yes">
+    <title>Service Orders</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= yield :head %>
-
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-gray-100 min-h-screen">
+    <nav class="bg-white shadow p-4">
+      <div class="max-w-4xl mx-auto flex justify-between">
+        <h1 class="font-bold text-lg">Service Orders</h1>
+        <%= link_to "New Order",
+            new_order_path,
+            class: "bg-blue-500 text-white px-3 py-2 rounded" %>
+      </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto mt-6 px-4">
+      <% if notice %>
+        <div class="mb-4 text-green-600"><%= notice %></div>
+      <% end %>
+
+      <% if alert %>
+        <div class="mb-4 text-red-600"><%= alert %></div>
+      <% end %>
+
       <%= yield %>
     </main>
   </body>
