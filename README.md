@@ -1,24 +1,65 @@
-# README
+Orders App
+==================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Ruby on Rails application to manage service orders with state transitions.
 
-Things you may want to cover:
+Requirements
+------------
 
-* Ruby version
+- Ruby 3.x
+- Rails 8.x
+- SQLite3
 
-* System dependencies
 
-* Configuration
+Setup
+-----
 
-* Database creation
+Clone the repository:
 
-* Database initialization
+```bash
+git clone <your-repo-url>\
+cd service_orders_app
+```
 
-* How to run the test suite
+Install dependencies:
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+bundle install
+```
 
-* Deployment instructions
+Create and migrate the database:
 
-* ...
+```bash
+rails db:create
+rails db:migrate
+```
+
+Run the application
+-------------------
+
+Start the server:
+
+```bash
+rails server
+```
+
+Open in your browser:
+
+```bash
+http://localhost:3000
+```
+
+Run tests
+---------
+
+```bash
+rails test
+```
+
+Order Workflow
+--------------
+
+- New orders start in **pending** state.
+- A pending order can move to **in_progress**.
+- An in_progress order can move to **completed**.
+- Completed orders cannot change state.
